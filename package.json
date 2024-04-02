@@ -2,7 +2,8 @@
   "name": "conversor_medidas",
   "version": "1.0.0",
   "description": "Conversos de medidas SI-Americano e Americano-SI",
-  "main": "index.js",  "scripts": {
+  "main": "index.ts",
+  "scripts": {
     "dev": "ts-node src/index.ts",
     "build": "tsc",
     "test": "jest",
