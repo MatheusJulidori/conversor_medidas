@@ -1,4 +1,4 @@
-import { ConvertAPI } from '../systemConversor';
+import { ConvertAPI } from './systemConversorMock';
 
 describe('ConvertAPI', () => {
   it('should convert Celsius to Fahrentheit correctly', async () => {
