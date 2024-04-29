@@ -1,0 +1,54 @@
+name: Projeto S107
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:   
+    runs-on: ubuntu-latest
+          
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Test Report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: test-results/**/*.xml  
+
+  build:       
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: build/**/*.js 
