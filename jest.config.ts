@@ -5,6 +5,14 @@ const config: Config = {
   transform: {
     '.+\\.ts$': 'ts-jest',
   },
+  reporters: [
+    'default',
+    ['jest-junit', {
+      suiteName: 'Jest Tests',
+      outputDirectory: 'test-results',
+      outputName: 'junit.xml',
+    }]
+  ]
 };
 
 export default config;
